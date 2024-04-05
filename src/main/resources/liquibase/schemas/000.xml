@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.13.xsd
+                      http://www.liquibase.org/xml/ns/dbchangelog-ext
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="loic" id="000">
+        <tagDatabase tag="000"/>
+    </changeSet>
+
+    <changeSet id="000-001" author="loic">
+
+        <ext:createCollection collectionName="cardetail_tbl"/>
+
+        <ext:createIndex collectionName="cardetail_tbl">
+            <ext:keys>{brand: 1}</ext:keys>
+            <ext:options>{name: "brand_Idx"}</ext:options>
+        </ext:createIndex>
+
+        <ext:createIndex collectionName="cardetail_tbl">
+            <ext:keys>{horsePower: 1}</ext:keys>
+            <ext:options>{name: "horsePower_Idx"}</ext:options>
+        </ext:createIndex>
+
+        <ext:insertOne collectionName="cardetail_tbl">
+            <ext:document>{"brand":"BMW", "model": "320e", "engine": 2.0, "horsePower": 204}</ext:document>
+        </ext:insertOne>
+
+    </changeSet>
+</databaseChangeLog>
